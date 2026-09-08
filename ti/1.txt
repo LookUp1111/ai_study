@@ -1,0 +1,5 @@
+instruction:描述让它干什么（指示）
+context:上下文
+Examples:给一一些例子，让模型知道怎么回复
+Input:输入
+Output Format:输出
