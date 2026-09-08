@@ -1,7 +1,11 @@
 import gradio as gr
 from openai import OpenAI
+import os
+from dotenv import load_dotenv
 
-api_key = "ak-f3d055bfc851cf89ca7de90146118d4a"
+load_dotenv() #加载 .env
+
+api_key = os.getenv("SPARK_API_KEY")
 api_base = "https://maas-api.cn-huabei-1.xf-yun.com/v2"
 
 def sendToDeepseek(say):
