@@ -1,0 +1,5 @@
+启动venv
+venv\Scripts\Activate.ps1
+
+退出
+deactivate

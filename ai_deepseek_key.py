@@ -1,8 +1,12 @@
 import time
 from openai import OpenAI
-from sqlmap.thirdparty.bottle.bottle import response
+import os
+from dotenv import load_dotenv
 
-key = ""
+load_dotenv() #加载 .env 中的变量
+
+
+key = os.getenv("DEEPSEEK_API_KEY")
 api_url  = "https://api.deepseek.com"
 def printChar(text,daley=0.1):
     for char in text:

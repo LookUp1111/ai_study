@@ -1,0 +1,4 @@
+# 默认忽略的文�?
+/shelf/
+/workspace.xml
+.env
