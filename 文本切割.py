@@ -12,6 +12,5 @@ chunks = [
 if len(sentences)%2 == 1 and sentences[-1].strip():
     chunks.append(sentences[-1])
 #重新组合句子和结尾的标点符号
-for i in chunks:
-
-    print(i)
+for i,chunk in enumerate(chunks):
+    print(f"块{i+1}：{len(chunk)}:{chunk}")
