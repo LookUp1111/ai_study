@@ -1,6 +1,0 @@
-instruction:"描述让它干什么（指示）"
-context:"上下文"
-Examples:"给一一些例子，让模型知道怎么回复"
-Input:"输入"
-Output Format:"输出"
-chain of thoughts:"思维链(把一个复杂的任务，拆成多个简单的任务，让大模型分布思考)"
