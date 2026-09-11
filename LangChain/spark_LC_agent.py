@@ -12,8 +12,7 @@ llm = ChatOpenAI(
     model = "spark-x2.5-4b",
 )
 
-# response = llm.invoke("你是谁")
-# print(response.content)
+#print(llm.invoke("你是谁").content)
 
 #多轮对话Session封装
 from langchain_core.messages import (
@@ -28,6 +27,12 @@ messages = [
     AIMessage(content="欢迎"),
     HumanMessage(content="我是谁"),
 ]
+# ret = llm.invoke(messages)
+# print(ret.content)
 
-ret = llm.invoke(messages)
+#PromptTemplate模块自定义变量
+from langchain_core.prompts import PromptTemplate
+template = PromptTemplate.from_template("给我讲一个关于{subject}的笑话")
+print(template.format(subject="南宁"))
+ret = llm.invoke(template.format(subject="南宁"))
 print(ret.content)
