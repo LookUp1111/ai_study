@@ -28,6 +28,6 @@ messages = chat_prompt.format_prompt(
     history=[human_message,ai_message],
     language="英文",
 )
-# print(messages.to_messages())
+print(messages.to_messages())
 ret = llm.invoke(messages)
 print(ret.content)
