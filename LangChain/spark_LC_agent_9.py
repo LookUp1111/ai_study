@@ -91,7 +91,7 @@ print(out.content)
 print("*****"*23)
 
 #格式化输出
-ret = runnable.invoke("不超过100元的流量大套餐有哪些")
+ret = runnable2.invoke("不超过100元的流量大套餐有哪些")
 print(
     json.dumps(
         ret.model_dump(),
