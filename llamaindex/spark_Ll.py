@@ -1,5 +1,7 @@
 from llama_index.core import SimpleDirectoryReader
 from llama_index.readers.file import PyMuPDFReader
+from llamaindex.jn_show import show_json
+import json
 # 加载本地数据  pdf 加载器还有SmartPDFLoader LlamaParse
 reader = SimpleDirectoryReader(
     input_dir="./data",          # 目标目录
@@ -13,6 +15,7 @@ if __name__=="__main__":
     print(len(documents))
     print(documents[1].text)
     print("$"*24)
-    print(documents)
+    print(show_json(documents[2].json()))
+
 
 
