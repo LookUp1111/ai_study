@@ -17,5 +17,3 @@ if __name__=="__main__":
     print("$"*24)
     print(show_json(documents[2].json()))
 
-
-
