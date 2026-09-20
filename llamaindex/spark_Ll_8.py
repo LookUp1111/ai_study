@@ -4,7 +4,7 @@ from llama_index.core import ChatPromptTemplate
 
 import os
 from dotenv import load_dotenv
-from llama_index.core import PromptTemplate
+
 load_dotenv()
 api_key = os.getenv("SPARK_API_KEY")
 llm = OpenAILike(
@@ -34,12 +34,16 @@ chat_text_qa_msgs = [
 
 text_qa_template = ChatPromptTemplate(chat_text_qa_msgs)
 
-text_qa_template =text_qa_template.format(
+messages =text_qa_template.format_messages(
     name="李四",
     context="这是一个测试",
     question="你是谁，你能干什么"
 )
-print(text_qa_template)
+# print(text_qa_template)
 
-a = llm.complete(text_qa_template)
-print(a)
+rep = llm.chat(messages)
+print(rep.message.content)
+messages.append(rep.message)
+messages.append(ChatMessage(role=MessageRole.USER, content="今天的天气如何"))
+rep2 = llm.chat(messages)
+print(rep2)
