@@ -27,8 +27,36 @@ vector_retriever = index.as_retriever(similarity_top_k=5)
 #检索 执行自然语言查询
 results = vector_retriever.retrieve("网络层的考点")
 
-print(results[0])
-print(results[1])
-print(results[2])
-print(results[3])
-print(results[4])
+# if __name__=="__main__":
+#     print(results[0])
+#     print("___" * 22)
+#     for i, node in enumerate(results):
+#         print(f"[{i}]{node.text}\n")
+
+
+# #生成回复
+# #单轮问答（Query Engine）
+# qa_engine = index.as_query_engine()
+# response = qa_engine.query("网络层的考点有多少个？")
+# print(response)
+# print("++++"*23)
+#
+# #流式输出
+# qa_engine = index.as_query_engine(streaming=True,)
+# response = qa_engine.query("网络层的考点有多少个？")
+# print(response)
+# print("++++"*23)
+
+# #多轮对话 自带上下文
+# chat_engine = index.as_chat_engine()
+# response = chat_engine.chat("网络层的考点有多少个？")
+# print(response)
+# response = chat_engine.chat("你总结一下")
+# print(response)
+
+#流式输出
+chat_engine = index.as_chat_engine()
+streaming_response = chat_engine.stream_chat("网络层的考点有多少个？")
+
+for token in streaming_response.response_gen:
+    print(token,end="",flush=True)

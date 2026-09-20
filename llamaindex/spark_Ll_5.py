@@ -98,21 +98,22 @@ results = vector_retriever.retrieve("网络层的考点")
 
 print(results[0])
 
+if __name__=="__main__":
+    # 本地包存 缓存
+    pipeline.persist("./pipeline_storage")
 
-#本地包存 缓存
-pipeline.persist("./pipeline_storage")
-new_pipeline = IngestionPipeline( #按顺序处理文档
-    transformations=[
-        #把长文档切分成小块 每块300token 相邻重叠100token
-        SentenceSplitter(chunk_size=300,chunk_overlap=100),
-        #为每个Node生成标题 写入metadata
-        TitleExtractor(),
-        #为每个Node生成向量 的模型
-        Settings.embed_model,
-    ],
-)
+    new_pipeline = IngestionPipeline(  # 按顺序处理文档
+        transformations=[
+            # 把长文档切分成小块 每块300token 相邻重叠100token
+            SentenceSplitter(chunk_size=300, chunk_overlap=100),
+            # 为每个Node生成标题 写入metadata
+            TitleExtractor(),
+            # 为每个Node生成向量 的模型
+            Settings.embed_model,
+        ],
+    )
 
-#加载缓存
-new_pipeline.load("./pipeline_storage")
-with Timer():
-    nodes = new_pipeline.run(documents=documents)
+    # 加载缓存
+    new_pipeline.load("./pipeline_storage")
+    with Timer():
+        nodes = new_pipeline.run(documents=documents)
